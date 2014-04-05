@@ -1,5 +1,11 @@
-# Coursera - UWHPSC - W1-L3.4
+"""
+Coursera - UWHPSC - W1-L3.4
+mysqrt.py
+"""
 def sqrt2(x):
+	"""
+	Docstring of sqrt2 function
+	"""
 	s = 1.
 	kmax = 100
 	tol = 1.e-14
