@@ -1,4 +1,4 @@
 UWHPSC
 ======
 
-rep for Coursera class Univ. Washington High Performance Scientific Computing
+repo for Coursera class Univ. Washington High Performance Scientific Computing
