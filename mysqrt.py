@@ -7,6 +7,15 @@ def sqrt2(x, debug=False):
     """
     more details.
     """
+    from numpy import nan
+
+    if x==0.:
+    	return 0.
+    elif x<0:
+    	print "*** x must be non-negative"
+    	return nan
+	assert x>0., "you done goofed"	
+	
     s = 1.
     kmax = 100
     tol = 1.e-14
