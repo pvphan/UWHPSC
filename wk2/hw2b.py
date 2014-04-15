@@ -72,9 +72,11 @@ def poly_interp(xi,yi):
     assert len(xi)== len(yi), error_message
 
     # Set up linear system to interpolate through data points:
-    for i in range(0,len(xi)-1):
-        A = np.concatenate([A,np.vstack([xi**i])
+    A = np.vstack([np.ones(len(xi))])
+    for i in range(1,len(xi)):
+        A = np.concatenate([A,np.vstack([xi**i])])
 
+    # import pdb; pdb.set_trace()
     A = A.T
     b = yi
 
@@ -118,15 +120,15 @@ def plot_poly(xi,yi,fig_num):
 
     x = np.linspace(xi.min() - 1, xi.max() + 1, 1001)
     c = poly_interp(xi,yi)
-    y = c[0]
     
-    # use Horners rule?
-    # y = c[n-1]
-    #   for j in range(n-1, 0, -1):
-    #       y = y*x + c[j-1]
-
+    # using Horners rule
     for i in range(1,len(xi)-1):
-        y += c[i]*x**i
+        y = c[i-1]
+        for j in range(i-1,0,-1):
+            y = y*x + c[j-1]
+
+    # for i in range(1,len(xi)-1):
+        # y += c[i]*x**i
 
     plt.figure(fig_num)       # open plot figure window
     plt.clf()           # clear figure
@@ -195,13 +197,13 @@ def test_poly():
     """
     Test code, no return value or exception if test runs properly.
     """
-    xi = np.array([-1., 1., 2., 5., -3.])
-    yi = np.array([0., 4., 3., -1., 8.])
+    xi = np.array([-1., 1., 2., 5., -3., 4., -2.])
+    yi = np.array([0., 4., 3., -1., 8., 4., 0.])
     c = poly_interp(xi,yi)
 
     print "c =      ", c
 
-    plot_poly(xi,yi,3)
+    plot_poly(xi,yi,4)
     plt.savefig('poly.png')   # save figure as .png file
 
 if __name__=="__main__":
@@ -218,5 +220,5 @@ if __name__=="__main__":
     test_quad2()
     print "Results of test_cubic1()"
     test_cubic1()
-    # print "Results of test_poly()"
-    # test_poly()
+    print "Results of test_poly()"
+    test_poly()
