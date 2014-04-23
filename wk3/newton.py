@@ -8,21 +8,22 @@ def solve(fvals, x0, debug=False):
 	x0 = the initial guess
 	debug = optional argument, default False
 	"""
+	print "Initial guess: x = %22.15e" % x0
 	x = x0
 	kmax = 20 
 	tol = 1.e-14
 	for k in range(kmax):
 		x0 = x
-		if debug:
-			print "Before iteration %s, x = %e" % (k,x)
 		f, fp = fvals(x)
 		x = x0 - f/fp
+		if debug:
+			print "After %s iterations, x = %22.15e" % (k+1,x)
 		delta_x = x - x0
 		if abs(delta_x / x) < tol:
 			break
-	if debug:
-		print "solve returns x = %e after %s iterations \
-			the value of f(x) is %e" % (x, k+1, f) 
+	# if debug:
+	# 	print "solve returns x = %22.15e after %s iterations \
+	# 		   the value of f(x) is %22.15e" % (x, k+1, f) 
 	return x, k 
 
 def fvals_sqrt(x):
@@ -42,6 +43,7 @@ def test1(debug_solve=False):
 	from numpy import sqrt
 	for x0 in [1., 2., 100.]:
 		print " "  # blank line
+		# print "for initial guess %22.15e" % x0
 		x,iters = solve(fvals_sqrt, x0, debug=debug_solve)
 		print "solve returns x = %22.15e after %i iterations " % (x,iters)
 		fx,fpx = fvals_sqrt(x)
