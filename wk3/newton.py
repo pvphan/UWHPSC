@@ -1,6 +1,7 @@
 # $UWHPSC/codes/homework3/test_code.py 
 # To include in newton.py
 # Name: Paul Vinh Phan
+#   currently on BBB!
 
 from sympy import *
 
