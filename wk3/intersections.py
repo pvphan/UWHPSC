@@ -40,6 +40,7 @@ def p4(debug_solve=False):
 	plt.savefig('intersections.png')
 
 	if debug_solve:
+		print "Intersection points (x,y)"
 		for i in range(0,len(a_x)):
 			print a_x[i], a_fx[i]
 
