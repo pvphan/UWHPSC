@@ -3,6 +3,7 @@
 from newton import solve
 import numpy as np
 import matplotlib.pyplot as plt
+import math
 
 def p4(debug_solve=False):
 	"""
@@ -29,8 +30,14 @@ def p4(debug_solve=False):
 	pi = math.pi
 	g1 = x_lin*np.cos(pi*x_lin)
 	g2 = 1 - 0.6*x_lin**2
-	plt.clf(); plt.plot(x_lin,g1,'r-'); plt.plot(x_lin,g2)
+	plt.clf(); plt.plot(x_lin,g1,'r-',label='$g_1(x)$'); 
+	plt.plot(x_lin,g2,label='$g_2(x)$')
+	plt.legend()
 	plt.plot(a_x, a_fx,'ko')
+
+	plt.title("Intersections of $g_1(x)$ and $g_2(x)$")
+	plt.legend()
+	plt.savefig('intersections.png')
 
 	if debug_solve:
 		for i in range(0,len(a_x)):
