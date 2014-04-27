@@ -1,4 +1,4 @@
-! $UWHPSC/codes/fortran/newton/newton.f90
+! $UWHPSC/wk3/fortran/newton.f90
 
 module newton
 

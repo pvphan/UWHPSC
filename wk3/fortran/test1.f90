@@ -1,4 +1,4 @@
-! $UWHPSC/codes/fortran/newton/test1.f90
+! $UWHPSC/wk3/fortran/test1.f90
 
 program test1
 
