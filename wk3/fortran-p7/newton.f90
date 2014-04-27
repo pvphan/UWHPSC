@@ -4,8 +4,11 @@ module newton
 
     ! module parameters:
     implicit none
-    integer, parameter :: maxiter = 20
-    real(kind=8), parameter :: tol = 1.d-14
+    integer, parameter :: maxiter = 40
+    real(kind=8) :: tol
+    save
+    real(kind=8) :: epsilon
+    save
 
 contains
 

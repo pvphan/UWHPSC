@@ -2,6 +2,10 @@
 
 module functions
 
+    implicit none
+    real(kind=8) :: epsilon
+    save
+
 contains
 
 real(kind=8) function f_sqrt(x)
@@ -46,5 +50,21 @@ real(kind=8) function g_2(x)
     g_2 = 1.d0 - 0.6*x**2
 
 end function g_2 
+
+real(kind=8) function f_quartic(x)
+    implicit none
+    real(kind=8), intent(in) :: x
+    
+    f_quartic = (x - 1.d0)**4 - epsilon
+
+end function f_quartic
+
+real(kind=8) function fprime_quartic(x)
+    implicit none
+    real(kind=8), intent(in) :: x
+    
+    fprime_quartic = 4*(x - 1.d0)**3
+
+end function fprime_quartic
 
 end module functions
