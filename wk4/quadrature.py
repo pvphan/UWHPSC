@@ -46,17 +46,18 @@ print "true integral: %22.14e" % int_true1
 
 # <codecell>
 
-def plot_trap(f,a,b,n):
+def plot_trap(f,a,b,n,fig=1):
     x = linspace(a-0.2, b+0.2, 10000) # points for smooth plot
     plot(x,f(x),'b-')
     xj = linspace(a,b,n)
     plot(xj,f(xj),'ro-')
     for xi in xj:
         plot([xi,xi], [0,f(xi)], 'r')
+    figure(fig)
     plot([a,b], [0,0], 'r') # along x-axis
 
-plot_trap(f1,a1,b1,5)
-
+plot_trap(f1,a1,b1,5,1)
+savefig("plot_trap")
 # <headingcell level=3>
 
 # The Trapezoid rule formula
@@ -173,7 +174,7 @@ print "true integral: %22.14e" % int_true2
 
 # <codecell>
 
-plot_trap(f2,a2,b2,10)
+plot_trap(f2,a2,b2,10,2)
 
 # <markdowncell>
 
@@ -181,7 +182,8 @@ plot_trap(f2,a2,b2,10)
 
 # <codecell>
 
-error_plot(f2,a2,b2,nvals,int_true2)
+# PROBLEM HERE ------------------------------------------
+error_plot(f2,a2,b2,nvals,int_true2) 
 
 # <markdowncell>
 
