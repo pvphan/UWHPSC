@@ -4,7 +4,7 @@ module quadrature
 
 	! module parameters:
 	implicit none
-	integer, dimension(:, )intent(in) :: nvals
+	integer, dimension(:), intent(in) :: nvals
 
 contains
 
@@ -33,17 +33,20 @@ subroutine trapezoid(f,a,b,nvals)
         pfj = fj 		! store previous
 		fj = f(xj) 		! calculate next
 
+		! add next piece of integral
 		int_trapezoid = int_trapezoid + h*((pfj + fj)/2.d0)
 
-        ! next step
 		xj = xj + h 	! iterate xj
         enddo
 
+    print 11, int_trapezoid
+11	format('Vinhs Trapezoid Rule gives int_trapezoid =', es22.15)
+	print *, " "
 
 end subroutine trapezoid
 
-subroutine error_table(f,a,b,nvals,int_true)
+! subroutine error_table(f,a,b,nvals,int_true)
 
-end subroutine error_table
+! end subroutine error_table
 
 end module quadrature
