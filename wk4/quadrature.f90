@@ -27,19 +27,19 @@ subroutine trapezoid(f,a,b,nvals)
 	h = (b-a)/(nvals-1) ! step size
 	xj = a 				! left bound start
 	fj = f(xj)			! initial value of f
-	int_trapezoid = 0.d0! intialize sum as 0
+	int_trapezoid = 0.d0! intialize sum as 0.00
 
 	do i=1,nvals
-        pfj = fj 		! store previous
+		pfj = fj 		! store previous
 		fj = f(xj) 		! calculate next
 
 		! add next piece of integral
 		int_trapezoid = int_trapezoid + h*((pfj + fj)/2.d0)
 
 		xj = xj + h 	! iterate xj
-        enddo
+	enddo
 
-    print 11, int_trapezoid
+	print 11, int_trapezoid
 11	format('Vinhs Trapezoid Rule gives int_trapezoid =', es22.15)
 	print *, " "
 
