@@ -27,10 +27,11 @@ real(kind=8) function trapezoid(f,a,b,n)
 
 	h = (b-a)/(n-1) ! step size
 	int_trapezoid = 0.d0! intialize sum as 0.00
-
-	pfj = f(a)			! initial value of f
+	
+	xj = a
+	pfj = f(xj)			! initial value of f
 	do j=1,n-1
-		xj = a + j*h 	! iterate xj
+		xj = xj + h 	! iterate xj
 		fj = f(xj) 		! calculate next
 
 		! add next piece of integral
