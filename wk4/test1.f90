@@ -1,3 +1,4 @@
+! $UWHPSC/wk4/test1.f90
 
 program test1
 
