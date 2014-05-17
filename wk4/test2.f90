@@ -1,12 +1,15 @@
 ! $UWHPSC/wk4/test1.f90
 
-program test1
+program test2
 
     use quadrature, only: trapezoid, error_table
 
     implicit none
     real(kind=8) :: a,b,int_true
     integer :: nvals(12), i
+    real(kind=8) :: t1, t2, elapsed_cpu_time
+
+    call cpu_time(t1)
 
     a = 0.d0
     b = 2.d0
@@ -23,6 +26,10 @@ program test1
 
     call error_table(f, a, b, nvals, int_true)
 
+    call cpu_time(t2)
+    elapsed_cpu_time = t2 - t1
+    print *, "Elapsed CPU time", elapsed_cpu_time
+    
 contains
 
     real(kind=8) function f(x)
@@ -36,4 +43,4 @@ contains
 
     end function f
 
-end program test1
+end program test2

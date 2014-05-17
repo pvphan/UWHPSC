@@ -7,8 +7,11 @@ program test2
     use omp_lib
 
     implicit none
-    real(kind=8) :: a,b,int_true
+    real(kind=8) :: a, b, int_true
     integer :: nvals(12), i
+    real(kind=8) :: t1, t2, elapsed_cpu_time
+
+    call cpu_time(t1)
 
     a = 0.d0
     b = 2.d0
@@ -24,6 +27,10 @@ program test2
     enddo
 
     call error_table(f, a, b, nvals, int_true)
+
+    call cpu_time(t2)
+    elapsed_cpu_time = t2 - t1
+    print *, "Elapsed CPU time", elapsed_cpu_time
 
 contains
 

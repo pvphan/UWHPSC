@@ -8,7 +8,7 @@ module quadrature
 contains
 
 real(kind=8) function trapezoid(f,a,b,n)
-	! Estimate the integral using Trapezoid Rule.
+	! Estimate the integral using Trapezoid Rule with OpenMP
 	! Input:
 	!	f: the function to find integral of
 	!	a: the lower bound of integral
@@ -33,7 +33,7 @@ real(kind=8) function trapezoid(f,a,b,n)
 	h = (b-a)/(n-1) ! step size
 	int_trapezoid = 0.d0! intialize sum as 0.00
 
-	!$omp parallel do private(xj,fj,pfj)
+	!$omp parallel do private(xj,fj,pfj) reduction(+ : int_trapezoid)
 	do j=1,n-1
 
 		xj = a + j*h 	! iterate xj
@@ -41,9 +41,7 @@ real(kind=8) function trapezoid(f,a,b,n)
 		pfj = f(xj-h)	! previous value
 
 		! add next piece of integral
-		!$omp critical
 		int_trapezoid = int_trapezoid + h*((pfj + fj)/2.d0)
-		!$omp end critical
 
 	enddo
 
