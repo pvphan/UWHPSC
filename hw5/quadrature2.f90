@@ -25,13 +25,9 @@ real(kind=8) function simpson(f, a, b, n)
     integer :: j
 
     h = (b-a)/(n-1.d0)
-    fjprev = f(a)
-    fjmid = f(a + h/2.d0)
-    fjnext = f(a+h)
-    int_sum = (1/6.d0) * (fjprev + 4.d0*fjmid + fjnext)
 
     !$omp parallel do private(fjprev,fjmid,fjnext) reduction(+ : int_sum) 
-    do j=2, n-1
+    do j=1, n-1
 
         fjprev = f(a + (j-1.d0)*h)
         fjmid = f(a + (j - 0.5d0)*h)
