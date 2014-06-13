@@ -1,11 +1,11 @@
 
-Sample code to start with for Homework 5.
+Homework 5 based on Profs sample code.
 
-For convenience a Makefile is provided:
-   $ make test
+Using Simpsons rule with OpenMP.
 
-to compile and run.
+Problem 5:
+	$ make test2
 
-A notebook describing Simpson's rule is in the notebook subdirectory, in
-various formats.
+Problem 6:
+	$ make test3
 
